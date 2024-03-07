@@ -2,7 +2,12 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
-	
+   // naming base variables
+   float iceCreamX;
+   float iceCreamY;
+   float iceCreamWidth;
+   float iceCreamHeight;
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -13,36 +18,12 @@ public class Sketch extends PApplet {
 
   public void setup() {
     background(167, 227, 242);
-   // naming base variables
-   float iceCreamX = random(0, 412);
-   float iceCreamY = random(0, 412);
-   float iceCreamWidth = random(0, 100);
-   float iceCreamHeight = random(0, 100);
 
-   // naming add-on variables
-
-   // chocolate
-   fill(77, 65, 47);
-   stroke(77, 65, 47);
-   circle(iceCreamX, iceCreamY, 175);
-   ellipse(iceCreamX / 2, iceCreamY * (float) 0.825, 100, 60);
-   ellipse(150, 400, 160, 30);
-
-   // whipped cream 
-   fill(250, 245, 245);
-   stroke(237, 209, 209);
-   ellipse(100, 260, 120, 55);
-   ellipse(100, 245, 105, 55);
-   ellipse(100, 221, 86, 55);
-   stroke(250, 245, 245);
-   triangle(57, 221, 143, 221, 100, 160);
-
-   // cherry
-   fill(255, 43, 28);
-   stroke(255, 43, 28);
-   circle(100, 180, 64);
-   strokeWeight(4);
-   line(100, 180, 85, 110);
+    iceCreamX = random(0, 400);
+    iceCreamY = random(120, 450);
+    iceCreamWidth = random(0, 100);
+    iceCreamHeight = random(0, 100);
+    
    
    /* 
    float ellipseX = random(0, 200);
@@ -71,7 +52,28 @@ public class Sketch extends PApplet {
 
   }
     public void draw() {
-  
+      // chocolate
+      fill(77, 65, 47);
+      stroke(77, 65, 47);
+      circle(iceCreamX, iceCreamY, 175);
+      ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
+      ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+
+      // whipped cream 
+      fill(250, 245, 245);
+      stroke(237, 209, 209);
+      ellipse(iceCreamX, iceCreamY - 70, 120, 55);
+      ellipse(iceCreamX, iceCreamY - 85, 105, 55);
+      ellipse(iceCreamX, iceCreamY - 109, 86, 55);
+      stroke(250, 245, 245);
+      triangle(iceCreamX - 43, iceCreamY - 109, iceCreamX + 43, iceCreamY - 109, iceCreamX, iceCreamY - 170);
+
+      // cherry
+      fill(255, 43, 28);
+      stroke(255, 43, 28);
+      circle(iceCreamX, iceCreamY - 150, 64);
+      strokeWeight(4);
+      line(iceCreamX, iceCreamY - 150, iceCreamX - 15, iceCreamY - 220);
     }
 
 }
