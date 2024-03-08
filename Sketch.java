@@ -5,8 +5,6 @@ public class Sketch extends PApplet {
    // naming base variables
    float iceCreamX;
    float iceCreamY;
-   float iceCreamWidth;
-   float iceCreamHeight;
 
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -19,12 +17,9 @@ public class Sketch extends PApplet {
   public void setup() {
     background(167, 227, 242);
 
-    iceCreamX = random(0, 400);
-    iceCreamY = random(120, 450);
-    iceCreamWidth = random(0, 100);
-    iceCreamHeight = random(0, 100);
+    iceCreamX = random(80, 400);
+    iceCreamY = random(160, 400);
     
-   
    /* 
    float ellipseX = random(0, 200);
    float ellipseY = random(0, 200);
@@ -59,6 +54,44 @@ public class Sketch extends PApplet {
       ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
       ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
 
+      if (iceCreamX >= 240 && iceCreamY >= 280 ) {
+        fill(227, 217, 188);
+        stroke(227, 217, 188);
+        circle(iceCreamX, iceCreamY, 175);
+        ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
+        ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+      }
+      else if (iceCreamX < 239 && iceCreamY >= 200) {
+        fill(232, 162, 174);
+        stroke(232, 162, 174);
+        circle(iceCreamX, iceCreamY, 175);
+        ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
+        ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+        fill(0);
+        textSize(19);
+        text("Your ice cream flavour is strawberry!", 10, 250);
+      }
+      else if (iceCreamX >= 240 && iceCreamY <=190) {
+        fill(77, 65, 47);
+        stroke(77, 65, 47);
+        circle(iceCreamX, iceCreamY, 175);
+        ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
+        ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+        fill(0);
+        textSize(19);
+        text("Your ice cream flavour is chocolate!", 10, 250);
+      }
+      else if (iceCreamX < 239 && iceCreamY <=190) {
+        fill(89,158,60);
+        stroke(9,158,60);
+        circle(iceCreamX, iceCreamY, 175);
+        ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
+        ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+        fill(0);
+        textSize(19);
+        text("Your ice cream flavour is matcha!", 10, 250);
+      }
+
       // whipped cream 
       fill(250, 245, 245);
       stroke(237, 209, 209);
@@ -67,13 +100,20 @@ public class Sketch extends PApplet {
       ellipse(iceCreamX, iceCreamY - 109, 86, 55);
       stroke(250, 245, 245);
       triangle(iceCreamX - 43, iceCreamY - 109, iceCreamX + 43, iceCreamY - 109, iceCreamX, iceCreamY - 170);
-
+      
       // cherry
       fill(255, 43, 28);
       stroke(255, 43, 28);
       circle(iceCreamX, iceCreamY - 150, 64);
       strokeWeight(4);
       line(iceCreamX, iceCreamY - 150, iceCreamX - 15, iceCreamY - 220);
+
+      if (iceCreamX >= 240 && iceCreamY >= 280 ) {
+        fill(0);
+        textSize(19);
+        text("Your ice cream flavour is vanilla!", 10, 250);
+      }
+      
     }
 
 }
