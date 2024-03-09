@@ -2,7 +2,7 @@
 import processing.core.PApplet;
 
 /**
- * Generate ice cream in random locations, and output a different message for different quadrants.
+ * Generate ice cream scoop in random locations, and output a different message for different quadrants.
  * @author: P .Yip
  *
  */
