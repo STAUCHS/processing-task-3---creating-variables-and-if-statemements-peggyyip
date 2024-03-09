@@ -1,4 +1,11 @@
+
 import processing.core.PApplet;
+
+/**
+ * Generate ice cream in random locations, and output a different message for different quadrants.
+ * @author: P .Yip
+ *
+ */
 
 public class Sketch extends PApplet {
 	
@@ -6,45 +13,17 @@ public class Sketch extends PApplet {
    float iceCreamX;
    float iceCreamY;
 
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
   public void settings() {
 	// put your size call here
     size(500, 500);
   }
 
   public void setup() {
-    background(167, 227, 242);
-
+    background(random(255), random(255), random(255));
+    
+    // randomize variables
     iceCreamX = random(80, 400);
     iceCreamY = random(160, 400);
-    
-   /* 
-   float ellipseX = random(0, 200);
-   float ellipseY = random(0, 200);
-   float ellipseWidth = random (10, 50);
-   float ellipseHeight = random (10, 50);
-   ellipse(ellipseX, ellipseY, ellipseWidth, ellipseHeight);
-
-   float randomX = random(0, 400);
-   float randomY = random(0, 400);
-    if (randomX < 200 && randomY < 200){
-      ellipse(randomX, randomY, ellipseWidth, ellipseHeight);
-   }
-    else if (randomX > 200 && randomY < 200){
-      ellipse(randomX, randomY, ellipseWidth, ellipseHeight);
-    }
-    // show current time
-    int hr = hour();
-    int min = minute();
-    // text size, x and y position
-    fill(0);
-    textSize(30);
-    text(hr, 200, 200);
-    text(min, 200, 225);
-    */
-
   }
     public void draw() {
       // chocolate
@@ -54,42 +33,34 @@ public class Sketch extends PApplet {
       ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
       ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
 
+      // Change colours of ice cream for different locations
       if (iceCreamX >= 240 && iceCreamY >= 280 ) {
         fill(227, 217, 188);
         stroke(227, 217, 188);
-        circle(iceCreamX, iceCreamY, 175);
         ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
         ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
+        circle(iceCreamX, iceCreamY, 175);
       }
-      else if (iceCreamX < 239 && iceCreamY >= 200) {
+      else if (iceCreamX < 240 && iceCreamY >= 280) {
         fill(232, 162, 174);
         stroke(232, 162, 174);
         circle(iceCreamX, iceCreamY, 175);
         ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
         ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
-        fill(0);
-        textSize(19);
-        text("Your ice cream flavour is strawberry!", 10, 250);
       }
-      else if (iceCreamX >= 240 && iceCreamY <=190) {
-        fill(77, 65, 47);
-        stroke(77, 65, 47);
+      else if (iceCreamX >= 240 && iceCreamY < 280) {
+        fill(168, 141, 131);
+        stroke(168, 141, 131);
         circle(iceCreamX, iceCreamY, 175);
         ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
         ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
-        fill(0);
-        textSize(19);
-        text("Your ice cream flavour is chocolate!", 10, 250);
       }
-      else if (iceCreamX < 239 && iceCreamY <=190) {
+      else if (iceCreamX < 240 && iceCreamY < 280) {
         fill(89,158,60);
-        stroke(9,158,60);
-        circle(iceCreamX, iceCreamY, 175);
+        stroke(89,158,60);
         ellipse(iceCreamX - 50, iceCreamY + 70, 100, 60);
         ellipse(iceCreamX + 50, iceCreamY + 70, 160, 30);
-        fill(0);
-        textSize(19);
-        text("Your ice cream flavour is matcha!", 10, 250);
+        circle(iceCreamX, iceCreamY, 175);
       }
 
       // whipped cream 
@@ -108,12 +79,52 @@ public class Sketch extends PApplet {
       strokeWeight(4);
       line(iceCreamX, iceCreamY - 150, iceCreamX - 15, iceCreamY - 220);
 
+      fill(0);
+
+      // Write out messages for each ice cream
       if (iceCreamX >= 240 && iceCreamY >= 280 ) {
-        fill(0);
-        textSize(19);
-        text("Your ice cream flavour is vanilla!", 10, 250);
+        textSize(30);
+        text("Your ice cream flavour is vanilla!", 50, 250);
       }
+      else if (iceCreamX < 240 && iceCreamY >= 280) {
+        textSize(30);
+        text("Your ice cream flavour is strawberry!", 30, 250);
+      }
+      else if (iceCreamX >= 240 && iceCreamY < 280) {
+        textSize(30);
+        text("Your ice cream flavour is chocolate!", 30, 250);
+      }
+      else if (iceCreamX < 240 && iceCreamY < 280) {
+        textSize(30);
+        text("Your ice cream flavour is matcha!", 50, 250);
+      }
+
+      // define time variables
+      int intCurrentHour = hour();
+      int intCurrentMinute = minute();
+      int intCurrentMonth = month();
+      int intCurrentDate = day();
+      int intCurrentYear = year();
       
+      // special colour case for time
+      boolean blnIsSpecialX = iceCreamX < 120;
+      boolean blnIsSpecialY = iceCreamY > 350;
+      boolean blnIsSpecialCase = blnIsSpecialX || blnIsSpecialY;
+      if (blnIsSpecialCase) {
+        fill(random(255), random(255), random(255));
+        }
+      else if (!blnIsSpecialCase) {
+        fill(0);
+      }
+
+      // position of time
+      textSize(30);
+      text("Year: " + intCurrentYear, 20, 90);
+      text("Day: " + intCurrentDate, 20, 65);
+      text("Month: " + intCurrentMonth, 20, 40);
+      text("Hour: " + intCurrentHour, 360, 40);
+      text("Minute: " + intCurrentMinute, 360, 65);
+
     }
 
 }
